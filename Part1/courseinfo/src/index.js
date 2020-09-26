@@ -1,39 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Header = (props) => {
+const Header = (props) => props.course
 
-  return (
-    <div>
-      <p>{props.course}</p>
-    </div>
-  )
-}
-
-const Total = (props) => {
-
-  return (
-    <div>
-      <p>Total amount of exercises: {props.exercises}</p>
-    </div>
-  )
-}
 const Content = (props) => {
-  console.log('props', props)
-  console.log('props', props)
-  console.log('part1', props.part1)
-  console.log('exercises', props.exercises)
-  console.log('part2', props.part2)
-  console.log('exercises', props.exercises)
-  console.log('part3', props.part3)
-  console.log('exercises', props.exercises)
 
+  console.log('tehtävämääränkunsaistähän', props.parts.exercises)
   return (
-
     <div>
-      <p>{props.part}, {props.exercises}</p>
+      <p>{props.parts.name}{', '}{props.parts.exercises}</p>
 
-
+    </div>
+  )
+}
+/* __________________________________________________________________________________ */
+const Total = (props) => {
+  console.log('Tähän summa: ', props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises)
+  return (
+    <div>
+      <p>Total amount of exercises: {props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises} </p>
     </div>
   )
 }
@@ -41,23 +26,20 @@ const Content = (props) => {
 const App = () => {
   const course = 'Half Stack application development'
 
-  const part1 = {
-    name: 'Fundamentals of React',
-    exercises: 10,
-  }
-
-  const part2 = {
-    name: 'Using props to pass data',
-    exercises: 7,
-  }
-
-  const part3 = {
-    name: 'State of a component',
-    exercises: 14,
-  }
-
-
-  const exercises = 'exercises'
+  const parts = [
+    {
+      name: 'Fundamentals of React',
+      exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+  ]
 
 
   return (
@@ -66,11 +48,14 @@ const App = () => {
         <Header course={course} />
       </h1>
 
-      <Content part={part1.name} exercises={part1.exercises} />
-      <Content part={part2.name} exercises={part2.exercises} />
-      <Content part={part3.name} exercises={part3.exercises} />
+      <Content parts={parts[0]} />
+      <Content parts={parts[1]} />
+      <Content parts={parts[2]} />
 
-      <Total exercises={part1[exercises] + part2[exercises] + part3[exercises]} />
+
+      <Total parts={parts} />
+
+
 
     </div>
   )
