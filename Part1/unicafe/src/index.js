@@ -13,9 +13,8 @@ const App = () => {
   const kasvataYkshyva = () => setGood(good + 1)
   const kasvataYksnetrl = () => setNeutral(neutral + 1)
   const kasvataYksbad = () => setBad(bad + 1)
-  console.log('good', good)
-  console.log('neutra', neutral)
-  console.log('bad', bad)
+  console.log('good', good,'neutra', neutral,'bad', bad)
+  
 
   return (
     <div>
