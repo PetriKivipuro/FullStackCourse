@@ -21,22 +21,28 @@ const App = () => {
     <div>
       <h1>Give feedback</h1>
 
-      <div>{good}</div>
+
       <button onClick={kasvataYkshyva}>
         good
       </button>
 
-      <div>{neutral}</div>
+
+
       <button onClick={kasvataYksnetrl}>
         neutral
       </button>
 
-      <div>{bad}</div>
+
       <button onClick={kasvataYksbad}>
         bad
       </button>
 
       <h2>Statistics</h2>
+
+      <div>good: {good}</div>
+      <div>neutral: {neutral}</div>
+      <div>bad: {bad}</div>
+
 
 
     </div>
