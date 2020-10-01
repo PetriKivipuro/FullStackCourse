@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const Statistics = (props) => {
+const total = props.good+props.bad+props.neutral
 console.log('props good amount tähän', props.good)
 
 return(
 <div>
 <h2>Statistics</h2>
  
- good: {props.good}
-
-
+  <div>good: {props.good}</div>
+  <div>neutral: {props.neutral}</div>
+ <div> bad: {props.bad}</div>
+  <div>all: {total}</div>
+  <div>average: {(props.good-props.bad)/(total)} </div>
+ <div> positive: {props.good/(total)*100} %</div>
 
 </div>
 )
@@ -27,7 +31,7 @@ const App = () => {
   const kasvataYksbad = () => setBad(bad + 1)
   console.log('good', good,'neutra', neutral,'bad', bad)
   
-  const total = good+bad+neutral
+  
 
 
   return (
@@ -46,17 +50,9 @@ const App = () => {
         bad
       </button>
 
-      <Statistics/>
+      <Statistics good={good} neutral= {neutral} bad={bad} />
 
-     <div>neutral: {neutral}</div>
-<div>bad: {bad}</div>
-<div>all: {total} </div>
-<div>average: {(good-bad)/(total)} </div>
-<div>positive: {good/(total)*100} %</div>
-
-
-
-    </div>
+     </div>
   )
 }
 
