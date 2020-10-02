@@ -1,16 +1,36 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
+const Button = ({onClick, text}) => (
+<button onClick={onClick}>
+{text}
+</button>
+)
+
+const Buttons = (props) => {
+return (
+<div>
+<Button onClick={props.good} text='good'/>
+<Button onClick={props.neutral} text='neutral'/>
+<Button onClick={props.bad} text='bad'/>
+</div>
+)}
+
+const Statistic =(props) => {
+return (
+<div>{props.text} {props.value} {props.text2}</div>
+)
+}
+
 const Statistics = (props) => {
 const total = props.good+props.bad+props.neutral
 
-
 if( total ===0){
+
 return(
 <div>
 <h1>Statistics</h1>
-
-<p>No feedback givennnn</p>
+<p>No feedback given</p>
 </div>
 )
 }
@@ -18,14 +38,14 @@ return(
 return(
 <div>
 <h1>Statistics</h1>
- 
-  <div>good: {props.good}</div>
-  <div>neutral: {props.neutral}</div>
-  <div> bad: {props.bad}</div>
-  <div>all: {total}</div>
-  <div>average: {(props.good-props.bad)/(total)} </div>
-  <div> positive: {props.good/(total)*100} %</div>
-
+  
+<Statistic text="good: " value={props.good}/>
+<Statistic text="neutral: " value={props.neutral}/>
+<Statistic text="bad: " value={props.bad}/>
+<Statistic text="total: " value={total}/>
+<Statistic text="average: " value={(props.good-props.bad)/(total)}/>
+<Statistic text="positive: " value={props.good/(total)*100} text2='%'/>
+   
 </div>
 )
 }
@@ -41,26 +61,12 @@ const App = () => {
   const kasvataYksnetrl = () => setNeutral(neutral + 1)
   const kasvataYksbad = () => setBad(bad + 1)
   console.log('good', good,'neutra', neutral,'bad', bad)
-  
-  
+   
   return (
     <div>
       <h1>Give feedback</h1>
-
-      <button onClick={kasvataYkshyva}>
-        good
-      </button>
-
-      <button onClick={kasvataYksnetrl}>
-        neutral
-      </button>
-
-      <button onClick={kasvataYksbad}>
-        bad
-      </button>
-
+      <Buttons  good={kasvataYkshyva} neutral={kasvataYksnetrl} bad={kasvataYksbad}/>
       <Statistics good={good} neutral= {neutral} bad={bad} noFeedback={noFeedback}/>
-
      </div>
   )
 }
