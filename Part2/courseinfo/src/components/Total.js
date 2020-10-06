@@ -5,7 +5,7 @@ const Total = (props) => {
     console.log('Tähän summa: ', props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises)
     return (
         <div>
-            <p>Total amount of exercises: {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises} </p>
+            <p><b>Total amount of {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises + props.course.parts[3].exercises} exercises </b></p>
         </div>
     )
 }

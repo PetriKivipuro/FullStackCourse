@@ -1,6 +1,6 @@
 import React from 'react'
 import Content from './components/Content'
-
+import Total from './components/Total'
 const App = () => {
 
     const course = {
@@ -21,10 +21,21 @@ const App = () => {
                 name: 'State of a component',
                 exercises: 14,
                 id: 3
+            },
+            {
+                name: 'Redux',
+                exercises: 11,
+                id: 4
             }
         ]
+
     }
     return <Content course={course} />
+
+
+
 }
+const result = notes.map(note => note.id)
+console.log('asas', result)
 
 export default App
