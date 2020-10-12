@@ -33,12 +33,13 @@ const courses = {
     }
   ]
 }
-const total = courses.parts.reduce(function (sum, parts) {
-  console.log('mitä tekee', sum, parts)
-  return sum + parts.exercises
-}, 0)
+
 
 const Total = () => {
+  const total = courses.parts.reduce(function (sum, parts) {
+    console.log('mitä tekee', sum, parts)
+    return sum + parts.exercises
+  }, 0)
   console.log('Tähän summa: ', total)
   return (
     <div>
