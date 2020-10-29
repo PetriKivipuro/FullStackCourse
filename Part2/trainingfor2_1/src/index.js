@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './App'
 
 
 const courses = [
@@ -26,6 +27,11 @@ const courses = [
         name: 'Redux',
         exercises: 11,
         id: 4
+      },
+      {
+        name: 'lololol',
+        exercises: 21,
+        id: 5
       }
     ]
   },
@@ -42,77 +48,17 @@ const courses = [
         name: 'Middlewares',
         exercises: 7,
         id: 2
+      },
+      {
+        name: 'tämmönenkin',
+        exercises: 9,
+        id: 3
       }
     ]
   }
 ]
 
 
-const Header = () => {
-  return (
-    <h1>Web development curriculum</h1>
-  )
-}
-
-const Total = ({ courses }) => {
-
-  const total = courses.reduce(function (sum, parts) {
-    console.log('mitä tekee', sum, parts)
-    return sum + parts.exercises
-  }, 0)
-  console.log('Tähän summa: ', total)
-  return (
-    <div>
-      <p><b>Total amount of {total} exercises </b></p>
-    </div>
-  )
-}
-
-const Courses = ({ courses }) => {
-  console.log('courseees', courses)
-  return (
-
-    <div>
-      <Header />
-      <Parts courses={courses} />
-      <Content courses={courses} />
 
 
-      <Total courses={courses} />
-    </div>
-  )
-}
-
-
-const Parts = ({ courses }) => {
-  console.log('partsit', courses)
-  return (
-    <div>
-      {courses.map(part =>
-        <p key={part.id}>{part.exercise}</p>
-      )}
-    </div>
-  )
-}
-
-const Content = ({ courses }) => {
-  return (
-    <div>
-      {courses.map(contentti =>
-        <p key={contentti.id}>{contentti.name}</p>
-      )}
-    </div>
-  )
-}
-const App = () => {
-  return (
-    <div>
-
-      <Courses courses={courses} />
-
-    </div >
-
-  )
-}
-
-ReactDOM.render(<App course={courses} />, document.getElementById('root'))
+ReactDOM.render(<App courses={courses} />, document.getElementById('root'))
