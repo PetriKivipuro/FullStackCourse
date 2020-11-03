@@ -18,22 +18,28 @@ const Buttons = (props) => {
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
-  const [vote, setVote] = useState(0)
-  const giveRandom = () => setSelected(selected + 1)
-  const giveVote = () => setVote(vote + 1)
+  const [vote, setVote] = useState(new Array(anecdotes.length).fill(0))
+  const giveRandom = () => setSelected(Number)
+  const giveVote = () => {
+
+    const copy = [...vote]
+    copy[selected] += 1
+
+    setVote(copy)
+  }
 
 
-  const number = anecdotes[Math.floor(Math.random() * anecdotes.length)]
+  const Number = () => Math.floor(Math.random() * anecdotes.length)
 
-
-  console.log('number', number)
   return (
     <div>
-
-      <div>{number}</div>
-      <div>Has {vote} votes</div>
+      <h1>Anecdote of the day </h1>
+      <div>{anecdotes[selected]}</div>
+      <div>Has {vote[selected]} votes</div>
       <Buttons vote={giveVote} selected={giveRandom} />
-
+      <h1>Anecdote with most votes </h1>
+      <p>{anecdotes[vote.indexOf(Math.max(...vote))]}</p>
+      <p>Has {Math.max(...vote)} votes</p>
     </div>
   )
 }

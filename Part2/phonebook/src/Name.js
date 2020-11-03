@@ -2,7 +2,8 @@ import React from 'react'
 
 const Name = ({ name }) => {
     return (
-        <p>{name.name}</p>
+        <div>{name.name}</div>
+
     )
 }
 

@@ -12,21 +12,27 @@ const App = (props) => {
     const nameObject = {
       name: newName,
       id: persons.length + 1,
-
-
     }
+    console.log('pers', persons)
+    if (persons.map(person => person.name.toLowerCase()).includes(newName.toLowerCase())) {
 
-    setPersons(persons.concat(nameObject))
-    setNewName('')
+      window.alert(newName + ' has already been added')
+    }
+    else {
+      setPersons(persons.concat(nameObject))
+      setNewName('')
+    }
   }
+
 
   const handleNameChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
-
   }
+
   return (
-    <div>
+    < div >
+
       <h2>Phonebook</h2>
 
 
@@ -36,6 +42,7 @@ const App = (props) => {
           onChange={handleNameChange} />
         <div>
           <button type="submit">add</button>
+
         </div>
       </form>
 
@@ -46,7 +53,8 @@ const App = (props) => {
           <Name key={i} name={name} />
         )}
       </div>
-    </div>
+    </div >
+
   )
 }
 

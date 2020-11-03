@@ -4,12 +4,8 @@ import App from './App';
 
 const names = [
     {
-
+        name: 'Artoo Hellas'
 
     }
 ]
 ReactDOM.render(<App names={names} />, document.getElementById('root'))
-
-ReactDOM.render(<App names={names} />, document.getElementById('root'))
-const result = names.map(name => name.name)
-console.log(result)
