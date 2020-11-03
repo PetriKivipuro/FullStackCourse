@@ -4,6 +4,7 @@ import Name from './Name'
 const App = (props) => {
   const [persons, setPersons] = useState(props.names)
   const [newName, setNewName] = useState('new name here..')
+  const [newNumber, setNewNumber] = useState('number here')
 
 
   const addName = (event) => {
@@ -11,6 +12,7 @@ const App = (props) => {
     console.log('btn clkd', event.target)
     const nameObject = {
       name: newName,
+      number: newNumber,
       id: persons.length + 1,
     }
     console.log('pers', persons)
@@ -21,13 +23,18 @@ const App = (props) => {
     else {
       setPersons(persons.concat(nameObject))
       setNewName('')
+      setNewNumber('')
+
     }
   }
-
 
   const handleNameChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
+  }
+  const handleNumberChange = (event) => {
+    console.log(event.target.value)
+    setNewNumber(event.target.value)
   }
 
   return (
@@ -35,14 +42,19 @@ const App = (props) => {
 
       <h2>Phonebook</h2>
 
-
+      <h2>Add a new</h2>
       <form onSubmit={addName}>
         name: <input
           value={newName}
           onChange={handleNameChange} />
         <div>
-          <button type="submit">add</button>
+          number: <input
+            value={newNumber}
+            onChange={handleNumberChange} />
+        </div>
 
+        <div>
+          <button type="submit">add</button>
         </div>
       </form>
 
