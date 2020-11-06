@@ -5,7 +5,21 @@ const App = (props) => {
   const [persons, setPersons] = useState(props.names)
   const [newName, setNewName] = useState('new name here..')
   const [newNumber, setNewNumber] = useState('number here')
+  const [newFilter, setNewFilter] = useState('')
 
+  const Filter = ({ newFilter, setNewFilter }) => {
+    const filter = (event) => {
+      setNewFilter(event.target.value)
+    }
+    return (
+      <div>
+        Filter <input
+          value={newFilter}
+          onChange={filter} />
+      </div>
+    )
+
+  }
 
   const addName = (event) => {
     event.preventDefault()
@@ -24,7 +38,6 @@ const App = (props) => {
       setPersons(persons.concat(nameObject))
       setNewName('')
       setNewNumber('')
-
     }
   }
 
@@ -37,10 +50,15 @@ const App = (props) => {
     setNewNumber(event.target.value)
   }
 
+  const filteredPersons = newFilter.length === 0
+    ? persons
+    : persons.filter(person => person.name.toLowerCase()).includes(newFilter.toLowerCase())
+
   return (
     < div >
 
       <h2>Phonebook</h2>
+      <Filter newFilter={newFilter} setNewFilter={setNewFilter} />
 
       <h2>Add a new</h2>
       <form onSubmit={addName}>
@@ -61,14 +79,14 @@ const App = (props) => {
       <div>
         <h2>Numbers</h2>
 
-        {persons.map((name, i) =>
-          <Name key={i} name={name} />
+        {filteredPersons.map(persons =>
+          <Name key={persons.name} name={persons} />
         )}
+
       </div>
     </div >
 
   )
 }
-
 
 export default App
