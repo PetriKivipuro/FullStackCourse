@@ -1,25 +1,13 @@
 import React, { useState } from 'react'
 import Name from './Name'
-const Filter = ({ newFilter, setNewFilter }) => {
-  const filter = (event) => {
-    setNewFilter(event.target.value)
-  }
-  return (
-    <div>
-      Filter <input
-        value={newFilter}
-        onChange={filter} />
-    </div>
-  )
+import Filter from './components/Filter'
 
-}
+
 const App = (props) => {
   const [persons, setPersons] = useState(props.names)
   const [newName, setNewName] = useState('new name here..')
   const [newNumber, setNewNumber] = useState('number here')
   const [newFilter, setNewFilter] = useState('')
-
-
 
   const addName = (event) => {
     event.preventDefault()
@@ -82,6 +70,7 @@ const App = (props) => {
         {filteredPersons.map(persons =>
           <Name key={persons.name} name={persons} />
         )}
+
 
       </div>
     </div >
