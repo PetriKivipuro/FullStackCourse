@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Name from './Name'
+import Name from './components/Name'
 import Filter from './components/Filter'
 import AddName from './components/AddName'
 
