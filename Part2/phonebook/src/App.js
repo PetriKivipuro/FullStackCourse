@@ -10,11 +10,6 @@ const App = (props) => {
   const [newNumber, setNewNumber] = useState('number here')
   const [newFilter, setNewFilter] = useState('')
 
-
-  const filteredPersons = newFilter === ''
-    ? persons
-    : persons.filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase()))
-
   return (
     < div >
 
@@ -27,9 +22,7 @@ const App = (props) => {
       <div>
         <h2>Numbers</h2>
 
-        {filteredPersons.map(persons =>
-          <Name key={persons.name} name={persons} />
-        )}
+        <Name persons={persons} newFilter={newFilter} setNewFilter={setNewFilter} />
 
 
       </div>

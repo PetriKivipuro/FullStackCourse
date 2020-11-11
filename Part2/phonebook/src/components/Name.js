@@ -1,9 +1,25 @@
 import React from 'react'
 
-const Name = ({ name }) => {
+const Molololo = ({ names }) => {
     return (
-        <div>{name.name} , {name.number}</div>
+        <div>
+            {names.name}, { names.number}
+        </div>
+    )
+}
 
+const Name = ({ persons, newFilter }) => {
+    console.log('personssi', persons)
+    const FilteredPersons = newFilter === ''
+        ? persons
+        : persons.filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase()))
+
+    return (
+        <div>
+            {FilteredPersons.map(names =>
+                <Molololo key={names.name} names={names} />
+            )}
+        </div>
     )
 }
 
