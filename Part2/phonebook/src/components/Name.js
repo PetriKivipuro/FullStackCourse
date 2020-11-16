@@ -9,7 +9,7 @@ const Molololo = ({ names }) => {
 }
 
 const Name = ({ persons, newFilter }) => {
-    console.log('personssi', persons)
+
     const FilteredPersons = newFilter === ''
         ? persons
         : persons.filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase()))

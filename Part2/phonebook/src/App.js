@@ -1,14 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Name from './components/Name'
 import Filter from './components/Filter'
 import AddName from './components/AddName'
+import axios from 'axios'
 
-
-const App = (props) => {
-  const [persons, setPersons] = useState(props.names)
+const App = () => {
+  const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('new name here..')
   const [newNumber, setNewNumber] = useState('number here')
   const [newFilter, setNewFilter] = useState('')
+
+  useEffect(() => {
+    console.log('effect')
+    axios.get('http://localhost:3001/names')
+      .then(response => {
+        console.log('promise fullifille')
+        setPersons(response.data)
+      })
+  }, [])
+  console.log('render', persons.length, 'persondfgdfs')
 
   return (
     < div >
