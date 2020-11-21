@@ -1,33 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import EnterCountry from './components/EnterCountry'
-import ShowInfo from './components/ShowInfo'
-import Country from './components/Country'
+import React, {useState, useEffect } from 'react'
 import axios from 'axios'
+import CountryFiltering from './components/CountryFiltering'
+import Countries from './components/Countries'
 
-
-
-const App = () => {
-  const [newCountry, setNewCountry] = useState('set joor sööts')
-
-  useEffect(() => {
-    console.log('effect')
-    axios.get('https://restcountries.eu/rest/v2/all')
-      .then(response => {
-        console.log('promise fullfilled')
-        setNewCountry(response.data)
+  const App = () => {
+    const [countries, setCountries] = useState([])
+    const [showCertainCountries, setFilter] = useState('')
+  
+    useEffect(() => {
+      axios.get('https://restcountries.eu/rest/v2/all').then((result) => {
+        setCountries(result.data)
       })
-  }, [])
-  console.log('render', newCountry.length, 'kjsdffjal')
-
-  return (
-    <div>
-      <EnterCountry newCountry={newCountry} setNewCountry={setNewCountry} />
-
-      <Country newCountry={newCountry} setNewCountry={setNewCountry} />
-
-    </div>
-  )
-}
+    }, [])
+  
+    const filteredCountries = showCertainCountries.length === 0 
+    ? countries 
+    : countries.filter(countriesN => countriesN.name.toLowerCase().includes(showCertainCountries.toLowerCase()))
+    return (
+      <div>
+        <CountryFiltering
+          value={showCertainCountries}
+          setValue={setFilter}
+        />
+        <Countries
+          countries={filteredCountries}
+          setValue={setFilter}
+        />
+      </div>
+    )
+  }
 
 
 export default App
