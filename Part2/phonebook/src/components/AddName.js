@@ -1,25 +1,24 @@
-import React from 'react'
 import axios from 'axios'
+import React from 'react'
+
+
 
 
 const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNumber }) => {
     const addName = (event) => {
 
         event.preventDefault()
-        console.log('btn clkd', event.target)
         const nameObject = {
             name: newName,
             number: newNumber,
             id: persons.length + 1,
         }
-axios
-.post('http://localhost:3001/names', nameObject)
-.then(response => {
-    console.log(response)
-})
-    
+   axios.post(`http://localhost:3001/names`, nameObject)
+        .then(response => {
+            console.log(response)
+        })
 
-        console.log('pers', persons)
+        
         if (persons.map(person => person.name.toLowerCase()).includes(newName.toLowerCase())) {
 
             window.alert(newName + ' has already been added')

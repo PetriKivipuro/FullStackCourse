@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Name from './components/Name'
 import Filter from './components/Filter'
 import AddName from './components/AddName'
-import axios from 'axios'
+import nameService from './services/names'
+
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -10,15 +11,15 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('number here')
   const [newFilter, setNewFilter] = useState('')
 
-  useEffect(() => {
-    console.log('effect')
-    axios.get('http://localhost:3001/names')
-      .then(response => {
-        console.log('promise fullifille')
-        setPersons(response.data)
-      })
-  }, [])
-  console.log('render', persons.length, 'persondfgdfs')
+    useEffect(() => {
+      console.log('effect')
+      nameService.getAll()
+        .then(response => {
+          console.log('promise fullifille')
+          setPersons(response.data)
+        })
+    }, [])
+  console.log('Render', persons.length, 'persons')
 
   return (
     < div >
