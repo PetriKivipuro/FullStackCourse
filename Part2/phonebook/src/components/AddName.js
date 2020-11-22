@@ -1,9 +1,6 @@
 import axios from 'axios'
 import React from 'react'
 
-
-
-
 const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNumber }) => {
     const addName = (event) => {
 
@@ -13,7 +10,8 @@ const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNu
             number: newNumber,
             id: persons.length + 1,
         }
-   axios.post(`http://localhost:3001/names`, nameObject)
+   
+           axios.post(`http://localhost:3001/names`, nameObject)
         .then(response => {
             console.log(response)
         })
