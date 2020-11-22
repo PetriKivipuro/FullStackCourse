@@ -1,5 +1,5 @@
 import React from 'react'
-
+import axios from 'axios'
 
 
 const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNumber }) => {
@@ -12,6 +12,13 @@ const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNu
             number: newNumber,
             id: persons.length + 1,
         }
+axios
+.post('http://localhost:3001/names', nameObject)
+.then(response => {
+    console.log(response)
+})
+    
+
         console.log('pers', persons)
         if (persons.map(person => person.name.toLowerCase()).includes(newName.toLowerCase())) {
 
