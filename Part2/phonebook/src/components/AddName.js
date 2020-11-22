@@ -1,5 +1,5 @@
-import axios from 'axios'
 import React from 'react'
+import nameService from '../services/names'
 
 const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNumber }) => {
     const addName = (event) => {
@@ -11,10 +11,11 @@ const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNu
             id: persons.length + 1,
         }
    
-           axios.post(`http://localhost:3001/names`, nameObject)
+        nameService
+        .create(nameObject)
         .then(response => {
-            console.log(response)
-        })
+                    console.log(response)
+                })
 
         
         if (persons.map(person => person.name.toLowerCase()).includes(newName.toLowerCase())) {
