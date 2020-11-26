@@ -1,6 +1,6 @@
-    import React from 'react'
+import React from 'react'
 
-const Molololo = ({ names }) => {
+const PrintInformation = ({ names }) => {
     return (
         <div>
             {names.name}, { names.number}
@@ -17,7 +17,7 @@ const Name = ({ persons, newFilter }) => {
     return (
         <div>
             {FilteredPersons.map(names =>
-                <Molololo key={names.name} names={names} />
+                <PrintInformation key={names.name} names={names} />
             )}
         </div>
     )
