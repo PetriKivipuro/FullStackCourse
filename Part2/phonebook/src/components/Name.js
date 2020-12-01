@@ -1,14 +1,7 @@
 import React from 'react'
 
-const PrintInformation = ({ names }) => {
-    return (
-        <div>
-            {names.name}, { names.number}
-        </div>
-    )
-}
 
-const Name = ({ persons, newFilter }) => {
+const Name = ({ persons, newFilter, removeInformation }) => {
 
     const FilteredPersons = newFilter === ''
         ? persons
@@ -17,8 +10,8 @@ const Name = ({ persons, newFilter }) => {
     return (
         <div>
             {FilteredPersons.map(names =>
-                <PrintInformation key={names.name} names={names} />
-            )}
+                <div key={names.name}> {names.name}, {names.number} <button onClick={() => removeInformation(names.id)}>delete </button> </div>
+                            )}
         </div>
     )
 }

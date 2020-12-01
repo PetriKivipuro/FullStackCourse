@@ -21,6 +21,27 @@ const App = () => {
     }, [])
   console.log('Render', persons.length, 'persons')
 
+const removeInformation=(id) => {
+const aa = persons.find(n => n.id === id)
+
+const warning = (window.confirm(`Are you sure you want to delete ${aa.name}`))
+
+if (warning === true)
+{
+  nameService
+  .remove(id)
+  .then(response => {
+  
+    const remove = persons.filter(person => id !== person.id)
+    setPersons(remove)
+  
+  })
+}
+
+
+
+}
+
   return (
     < div >
 
@@ -33,7 +54,7 @@ const App = () => {
       <div>
         <h2>Numbers</h2>
 
-        <Name persons={persons} newFilter={newFilter} setNewFilter={setNewFilter} />
+        <Name persons={persons} newFilter={newFilter} setNewFilter={setNewFilter} removeInformation={removeInformation}/>
 
 
       </div>

@@ -2,33 +2,58 @@ import React from 'react'
 import nameService from '../services/names'
 
 const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNumber }) => {
-    const addName = (event) => {
+    const addName = (event) => 
+    {
 
         event.preventDefault()
         const nameObject = {
             name: newName,
             number: newNumber,
-            id: persons.length + 1,
+            id: Math.random() < 0.5
+
         }
    
-        nameService
-        .create(nameObject)
-        .then(response => {
-                    console.log(response)
-                })
-
-        
-        if (persons.map(person => person.name.toLowerCase()).includes(newName.toLowerCase())) {
+        if (persons.some(person => person.name.toLowerCase() === newName.toLowerCase() && person.number === newNumber)) {
 
             window.alert(newName + ' has already been added')
         }
+        else if (persons.some(person => person.name.toLowerCase() === newName.toLowerCase() && person.number !== newNumber)){
+            const notific = (window.confirm(`${newName} already exist. Do wish to update the number?`))
+                if(notific === true)
+                {
+                    updateNumber(nameObject) 
+                }
+                else {
+                    return null
+                }
+        }       
         else {
-            setPersons(persons.concat(nameObject))
-            setNewName('')
-            setNewNumber('')
-        }
-    }
+            nameService
+            .create(nameObject)
+            .then(response => {
+                console.log(response)
+                setPersons(persons.concat(response.data))
+        })
 
+    }
+    setNewName('')
+    setNewNumber('')
+}
+
+const updateNumber=(names) =>{
+const find = persons.find(pers => pers.name.toLowerCase()===names.name.toLowerCase()).id
+
+names={ ...names, id:find}
+
+nameService
+.update(find, names)
+.then(response => {
+    const update = persons.map(p => p.id !== find ? p : response.data)
+    setPersons(update)
+})
+
+
+} 
     const handleNameChange = (event) => {
         console.log(event.target.value)
         setNewName(event.target.value)
