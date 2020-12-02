@@ -2,12 +2,12 @@
   "names": [
     {
       "name": "Arto Hellas",
-      "number": "123456",
+      "number": "011",
       "id": 1
     },
     {
       "name": "Ada Luvleis",
-      "number": "987685-555-555-85",
+      "number": "666-666-666-66-6",
       "id": true
     },
     {
@@ -16,49 +16,19 @@
       "id": 2
     },
     {
-      "name": "A",
-      "number": "",
-      "id": 4
-    },
-    {
-      "name": "g",
-      "number": "",
-      "id": 5
-    },
-    {
-      "name": "aas",
-      "number": "23",
-      "id": 6
-    },
-    {
-      "name": "new name here..",
-      "number": "number here",
-      "id": 7
-    },
-    {
-      "name": "h",
-      "number": "fff",
-      "id": 8
-    },
-    {
-      "name": "dfhsdf",
-      "number": "45372",
-      "id": 9
-    },
-    {
-      "name": "syukedtyjdfjd",
-      "number": "45738",
-      "id": 10
-    },
-    {
-      "name": "sfdhg",
-      "number": "3456",
-      "id": 11
-    },
-    {
       "name": "joulupukki",
-      "number": "987654321-1111",
+      "number": "65488888",
       "id": 12
+    },
+    {
+      "name": "Petri Kivipuro",
+      "number": "123456789",
+      "id": 13
+    },
+    {
+      "name": "kakka pää",
+      "number": "57575",
+      "id": 14
     }
   ]
 }

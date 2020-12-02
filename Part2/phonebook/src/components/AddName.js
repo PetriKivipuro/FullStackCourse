@@ -39,7 +39,7 @@ const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNu
             setTimeout(() =>{
                 setModMessage(null)
                 },5000)
-                
+
                 setNewName('')
                 setNewNumber('')
 })
@@ -66,8 +66,22 @@ nameService
 .then(response => {
     const update = persons.map(p => p.id !== find ? p : response.data)
     setPersons(update)
+    
+    setModMessage(
+        `'${newName}' has now been updated!`
+    )
+    setTimeout(() =>{
+        setModMessage(null)
+        },5000)
 })
-
+  .catch(error => {
+                setModMessage(
+                    `name '${persons.content}' has been updated`
+                )
+                setTimeout(() =>{
+                setModMessage(null)
+                },5000)
+    })
 
 } 
     const handleNameChange = (event) => {

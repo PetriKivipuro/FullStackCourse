@@ -47,7 +47,8 @@ if (warning === true)
   },5000)
     })
   //This has been added
-    .catch(error => {
+  // When shall we get this next message?
+  .catch(error => {
       setErrorMessage(
         `name '${persons.content}' has already deleted`
       )
