@@ -1,7 +1,7 @@
 import React from 'react'
 import nameService from '../services/names'
 
-const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNumber }) => {
+const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNumber, setModMessage }) => {
     const addName = (event) => 
     {
 
@@ -33,12 +33,28 @@ const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNu
             .then(response => {
                 console.log(response)
                 setPersons(persons.concat(response.data))
-        })
+            setModMessage(
+                `${newName} is now added` 
+            )
+            setTimeout(() =>{
+                setModMessage(null)
+                },5000)
+                
+                setNewName('')
+                setNewNumber('')
+})
 
-    }
-    setNewName('')
-    setNewNumber('')
-}
+                .catch(error => {
+                setModMessage(
+                    `name '${persons.content}' has already deleted`
+                )
+                setTimeout(() =>{
+                setModMessage(null)
+                },5000)
+    })
+
+    }}
+
 
 const updateNumber=(names) =>{
 const find = persons.find(pers => pers.name.toLowerCase()===names.name.toLowerCase()).id
@@ -79,4 +95,5 @@ nameService
     )
 
 }
+
 export default AddName
