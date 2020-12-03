@@ -9,7 +9,7 @@ const AddName = ({ persons, setPersons, newName, setNewName, newNumber, setNewNu
         const nameObject = {
             name: newName,
             number: newNumber,
-            id: Math.random() < 0.5
+            id: Math.floor(Math.random() * Math.floor(10))
 
         }
    
